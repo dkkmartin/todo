@@ -1,5 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+/* 
+font-family: 'Red Hat Display', sans-serif;
+font-family: 'Red Hat Text', sans-serif;
+*/
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+/* Main */
+
+.main {
+  height: 100dvh;
+  background-image: url(assets/img/background.png);
+}
+
+/* CARD */
+.card {
+  height: 69px;
+  width: 370px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+.card__content__container {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.card__content__text__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.card__content__info__container {
+  display: flex;
+  gap: 1em;
+}
+
+.info__calendar,
+.info__project {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 1%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.button__ellipse {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s;
+}
+
+.button__ellipse:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.card__content__icons__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.icon--blue {
+  color: rgba(61, 158, 255, 0.7);
+  font-size: 22px;
+}
+
+.icon--red {
+  color: rgba(255, 3, 3, 0.5);
+  font-size: 22px;
+}
+
+.card__content__title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.button--nostyle {
+  border: none;
+  background-color: inherit;
+  display: flex;
+}
+
+/* SIDE MENU */
+
+.sidebar {
 }

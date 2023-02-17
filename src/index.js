@@ -1,8 +1,2 @@
 import { format, compareAsc} from 'date-fns'
 import './style.css'
-import iconDate from './assets/icons/date.png'
-import iconDelete from './assets/icons/delete.png'
-import iconEdit from './assets/icons/edit.png'
-import iconEllipse from './assets/icons/ellipse.png'
-import iconFolder from './assets/icons/folder.png'
-import iconGithub from './assets/icons/github.png'
