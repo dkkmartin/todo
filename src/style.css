@@ -14,11 +14,19 @@ font-family: 'Red Hat Text', sans-serif;
 /* Main */
 
 .main {
-  height: 100dvh;
-  background-image: url(assets/img/background.png);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
 }
 
 /* CARD */
+
+.main__content__cards {
+  background-image: url(assets/img/background.png);
+  background-size: 100% 100%;
+  flex: 5;
+}
+
 .card {
   height: 69px;
   width: 370px;
@@ -105,4 +113,7 @@ font-family: 'Red Hat Text', sans-serif;
 /* SIDE MENU */
 
 .sidebar {
+  flex: 1.3;
+  border-right: 1px solid white;
+  background: linear-gradient(90deg, #50c9c3 0%, #96deda 100%);
 }
