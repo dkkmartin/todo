@@ -8,9 +8,7 @@
     <title>Todo</title>
   </head>
   <body>
-    <header></header>
     <main class="main">
-
       <aside class="sidebar">
         <div class="sidebar__container">
           <h1 class="sidebar__title">TODO</h1>
@@ -20,19 +18,18 @@
             <button class="sidebar__button button--projects">Projects</button>
           </div>
         </div>
-
         <div class="footer__container">
-          <i class="icon fab fa-github"></i>
+          <a href="https://github.com/dkkmartin" target="_blank" class="link__github">
+            <i class="icon fab fa-github"></i>
+          </a>
         </div>
       </aside>
-
       <section class="main__content__cards">
         <div class="card" data-card="0">
           <div class="card__content__container">
             <button class="button button__ellipse"></button>
             <div class="card__content__text__container">
               <h5 class="card__content__title">Do the laundry</h5>
-
               <div class="card__content__info__container">
                 <div class="info__calendar">
                   <i class="icon far fa-calendar"></i>
@@ -45,10 +42,41 @@
               </div>
             </div>
           </div>
-
           <div class="card__content__icons__container">
-            <button class="button button--nostyle"><i class="icon icon--blue far fa-edit "></i></button>
-            <button class="button button--nostyle"><i class="icon icon--red far fa-trash-alt "></i></button>
+            <button class="button button--nostyle">
+              <i class="icon icon--blue far fa-edit"></i>
+            </button>
+            <button class="button button--nostyle">
+              <i class="icon icon--red far fa-trash-alt"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card" data-card="1">
+          <div class="card__content__container">
+            <button class="button button__ellipse"></button>
+            <div class="card__content__text__container">
+              <h5 class="card__content__title">Do the laundry</h5>
+              <div class="card__content__info__container">
+                <div class="info__calendar">
+                  <i class="icon far fa-calendar"></i>
+                  <p class="card__info__date">12/07/23</p>
+                </div>
+                <div class="info__project">
+                  <i class="icon far fa-folder"></i>
+                  <p class="card__info__project">Work</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card__content__icons__container">
+            <button class="button button--nostyle">
+              <i class="icon icon--blue far fa-edit"></i>
+            </button>
+            <button class="button button--nostyle">
+              <i class="icon icon--red far fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
       </section>
     </main>

@@ -11,7 +11,7 @@ font-family: 'Red Hat Text', sans-serif;
   box-sizing: border-box;
 }
 
-/* Main */
+/* MAIN */
 
 .main {
   height: 100vh;
@@ -25,11 +25,15 @@ font-family: 'Red Hat Text', sans-serif;
   background-image: url(assets/img/background.png);
   background-size: 100% 100%;
   flex: 5;
+  padding: 1%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .card {
-  height: 69px;
-  width: 370px;
+  justify-self: center;
+  height: clamp(65px, 6vh, 7vh);
+  width: calc(100% - 2em);
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -162,4 +166,8 @@ font-family: 'Red Hat Text', sans-serif;
   height: 54px;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.link__github {
+  color: inherit;
 }
