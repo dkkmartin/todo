@@ -5,6 +5,14 @@ font-family: 'Red Hat Display', sans-serif;
 font-family: 'Red Hat Text', sans-serif;
 */
 
+/* ANIMATION */
+
+.expand:focus {
+  height: 50vh;
+}
+
+/* BODY */
+
 * {
   padding: 0;
   margin: 0;
@@ -28,6 +36,8 @@ font-family: 'Red Hat Text', sans-serif;
   padding: 1%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  align-items: center;
 }
 
 .card {
@@ -35,10 +45,10 @@ font-family: 'Red Hat Text', sans-serif;
   height: clamp(65px, 6vh, 7vh);
   width: calc(100% - 2em);
   padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -155,6 +165,8 @@ font-family: 'Red Hat Text', sans-serif;
   height: 10vh;
   font-weight: 400;
   font-size: 18px;
+  cursor: pointer;
+  transition: height 1s;
 }
 
 .footer__container {
