@@ -7,7 +7,7 @@ font-family: 'Red Hat Text', sans-serif;
 
 /* ANIMATION */
 
-.expand:focus {
+.expand:hover {
   height: 50vh;
 }
 
@@ -167,6 +167,10 @@ font-family: 'Red Hat Text', sans-serif;
 }
 
 .sidebar__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #363636;
   border: 1px solid #ffffff;
   border-radius: 5px;
   background-color: inherit;
@@ -191,4 +195,10 @@ font-family: 'Red Hat Text', sans-serif;
 
 .link__github {
   color: inherit;
+}
+
+/* SIDEMENU BUTTON MODALS */
+
+.new__project__modal {
+  display: none;
 }

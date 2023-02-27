@@ -1,19 +1,27 @@
-(function btnsListener () {
-  const btns = document.querySelectorAll('.sidebar__button')
-  for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener('click', () => {
-      animator(btns[i])
-    })
-    btns[i].addEventListener('mouseout', () => {
-      btns[i].classList.remove('expand')
+function btnsListener () {
+  const sideBtns = document.querySelectorAll('.sidebar__button')
+  const editBtns = document.querySelectorAll('.button--edit')
+  for (let i = 0; i < editBtns.length; i++) {
+    editBtns[i].addEventListener('click', () => {
+      // modal opener
     })
   }
-})()
-
-function animator (element) {
-  if (element.classList.contains('expand')) {
-    element.classList.remove('expand')
-  } else {
-    element.classList.add('expand')
+  for (let i = 0; i < sideBtns.length; i++) {
+    sideBtns[i].addEventListener('click', () => {
+      animator(sideBtns[i])
+    })
+    sideBtns[i].addEventListener('mouseout', () => {
+      sideBtns[i].classList.remove('expand')
+    })
   }
 }
+
+function animator (element) {
+  if (element.classList.contains('card')) {
+    element.classList.toggle('expandCard')
+  } else {
+    element.classList.toggle('expand')
+  }
+}
+
+export { btnsListener }
