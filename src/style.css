@@ -53,6 +53,7 @@ font-family: 'Red Hat Text', sans-serif;
   justify-content: space-between;
   align-items: center;
   font-family: 'Red Hat Text', sans-serif;
+  cursor: pointer;
 }
 
 .card__content__container {
@@ -92,9 +93,12 @@ font-family: 'Red Hat Text', sans-serif;
   transition: background-color 0.3s;
 }
 
-.button__ellipse:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+.button:hover {
   cursor: pointer;
+}
+
+.button__ellipse:hover {
+  background-color: rgba(128, 255, 111, 0.5);
 }
 
 .card__content__icons__container {
@@ -122,6 +126,11 @@ font-family: 'Red Hat Text', sans-serif;
   border: none;
   background-color: inherit;
   display: flex;
+  transition: transform 0.3s ease;
+}
+
+.button--nostyle:hover {
+  transform: scale(1.25);
 }
 
 /* SIDE MENU */
