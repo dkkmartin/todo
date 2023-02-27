@@ -13,9 +13,27 @@
         <div class="sidebar__container">
           <h1 class="sidebar__title">TODO</h1>
           <div class="sidebar__button__container">
-            <button class="sidebar__button button--newproject">New Project</button>
-            <button class="sidebar__button button--newtodo">New Todo</button>
-            <button class="sidebar__button button--projects">Projects</button>
+            <div class="sidebar__button button--newproject">
+              <p class="sidebar__button__title">New Project</p>
+              <div class="new__project__modal">
+                <p class="np__title">Project name</p>
+                <input class="np__input" type="text" />
+                <div class="np__checkmarks__container">
+                  <div class="np__checkmark checkmark--accept">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="np__checkmark checkmark--decline">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar__button button--newtodo">
+              <p class="sidebar__button__title">New Todo</p>
+            </div>
+            <div class="sidebar__button button--projects">
+              <p class="sidebar__button__title">Projects</p>
+            </div>
           </div>
         </div>
         <div class="footer__container">
@@ -43,10 +61,10 @@
             </div>
           </div>
           <div class="card__content__icons__container">
-            <button class="button button--nostyle">
+            <button class="button button--edit button--nostyle">
               <i class="icon icon--blue far fa-edit"></i>
             </button>
-            <button class="button button--nostyle">
+            <button class="button button--delete button--nostyle">
               <i class="icon icon--red far fa-trash-alt"></i>
             </button>
           </div>
