@@ -1,0 +1,10 @@
+Missing features:
+_______________________
+Modals for every button
+Logic for creating new todo's and projects
+logic for showing projects
+logic for a card {
+    Edit the card
+    delete the card
+    complete the card
+}
