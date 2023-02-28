@@ -7,8 +7,30 @@ font-family: 'Red Hat Text', sans-serif;
 
 /* ANIMATION */
 
-.expand:hover {
-  height: 50vh;
+@keyframes expander {
+  0% {
+    height: 10vh;
+  }
+  100% {
+    height: 50vh;
+  }
+}
+
+@keyframes resizer {
+  0% {
+    height: 50vh;
+  }
+  100% {
+    height: 10vh;
+  }
+}
+
+.expand {
+  animation: expander 1s forwards;
+}
+
+.resize {
+  animation: resizer 1s forwards;
 }
 
 /* BODY */
@@ -179,7 +201,6 @@ font-family: 'Red Hat Text', sans-serif;
   font-weight: 400;
   font-size: 18px;
   cursor: pointer;
-  transition: height 1s;
 }
 
 .footer__container {
@@ -199,6 +220,21 @@ font-family: 'Red Hat Text', sans-serif;
 
 /* SIDEMENU BUTTON MODALS */
 
-.new__project__modal {
+.sidebar__modal {
   display: none;
+  text-align: center;
+}
+
+.modal__input {
+  height: 3vh;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.checkmarks__container {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
 }

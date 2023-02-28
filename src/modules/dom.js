@@ -1,8 +1,9 @@
-import { animator } from './animation'
-import { modalMaker, returnOGContent } from './modals'
+import { expander, resizer } from './animation'
+import { modalMaker, returnContent } from './modals'
 
 export function btnsListener () {
   const sideBtns = document.querySelectorAll('.sidebar__button')
+  const sideBtnsDecline = document.querySelectorAll('.checkmark--decline')
   const editBtns = document.querySelectorAll('.button--edit')
 
   // Card edit button
@@ -15,13 +16,25 @@ export function btnsListener () {
   // Sidemenu buttons
   for (let i = 0; i < sideBtns.length; i++) {
     sideBtns[i].addEventListener('click', () => {
-      animator(sideBtns[i])
-      // modal insert
-      modalMaker(sideBtns[i])
+      if (sideBtns[i].classList.contains('resize')) {
+        return ''
+      } else {
+        expander(sideBtns[i])
+      }
     })
-    sideBtns[i].addEventListener('mouseout', () => {
-      returnOGContent()
-      sideBtns[i].classList.remove('expand')
+    sideBtns[i].addEventListener('animationend', () => {
+      if (sideBtns[i].classList.contains('expand')) {
+        modalMaker(sideBtns[i])
+      } else {
+        return ''
+      }
+    })
+  }
+
+  for (let i = 0; i < sideBtnsDecline.length; i++) {
+    sideBtnsDecline[i].addEventListener('click', () => {
+      returnContent(sideBtns[i])
+      resizer(sideBtns[i])
     })
   }
 }

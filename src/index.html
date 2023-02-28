@@ -15,11 +15,11 @@
           <div class="sidebar__button__container">
             <div class="sidebar__button button--newproject">
               <p class="sidebar__button__title title--newproject">New Project</p>
-              <div class="new__project__modal">
+              <div class="sidebar__modal newproject__modal">
                 <p class="np__title">Project name</p>
-                <input class="np__input" type="text" />
-                <div class="np__checkmarks__container">
-                  <div class="np__checkmark checkmark--accept">
+                <input class="modal__input" type="text" />
+                <div class="checkmarks__container">
+                  <div class="checkmark checkmark--accept">
                     <i class="fas fa-check"></i>
                   </div>
                   <div class="np__checkmark checkmark--decline">
@@ -29,10 +29,34 @@
               </div>
             </div>
             <div class="sidebar__button button--newtodo">
-              <p class="sidebar__button__title">New Todo</p>
+              <p class="sidebar__button__title title--newtodo">New Todo</p>
+              <div class="sidebar__modal newtodo__modal">
+                <p class="np__title">Project name</p>
+                <input class="modal__input" type="text" />
+                <div class="checkmarks__container">
+                  <div class="nt__checkmark checkmark--accept">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="nt__checkmark checkmark--decline">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="sidebar__button button--projects">
-              <p class="sidebar__button__title">Projects</p>
+              <p class="sidebar__button__title title--projects">Projects</p>
+              <div class="sidebar__modal projects__modal">
+                <p class="p__title">Project name</p>
+                <input class="modal__input" type="text" />
+                <div class="checkmarks__container">
+                  <div class="p__checkmark checkmark--accept">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="p__checkmark checkmark--decline">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
