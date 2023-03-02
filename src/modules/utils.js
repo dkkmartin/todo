@@ -22,6 +22,6 @@ export function resize (btn) {
   })
 }
 
-function delay (time) {
+export function delay (time) {
   return new Promise(resolve => setTimeout(resolve, time))
 }

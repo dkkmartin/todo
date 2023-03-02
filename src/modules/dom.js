@@ -25,6 +25,10 @@ export default class DOM {
     element.style.display = 'block'
   }
 
+  static displayFlex (element) {
+    element.style.display = 'flex'
+  }
+
   static addClass (element, className) {
     element.classList.add(className)
   }
