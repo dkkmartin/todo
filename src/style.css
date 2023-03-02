@@ -189,9 +189,7 @@ font-family: 'Red Hat Text', sans-serif;
 }
 
 .sidebar__button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
   color: #363636;
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -201,6 +199,12 @@ font-family: 'Red Hat Text', sans-serif;
   font-weight: 400;
   font-size: 18px;
   cursor: pointer;
+}
+
+.sidebar__button__title {
+  border: none;
+  background-color: inherit;
+  font: inherit;
 }
 
 .footer__container {
