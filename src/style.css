@@ -198,13 +198,14 @@ font-family: 'Red Hat Text', sans-serif;
   height: 10vh;
   font-weight: 400;
   font-size: 18px;
-  cursor: pointer;
 }
 
-.sidebar__button__title {
+.sidebar__button__title,
+.checkmark {
   border: none;
   background-color: inherit;
   font: inherit;
+  cursor: pointer;
 }
 
 .footer__container {
@@ -224,20 +225,45 @@ font-family: 'Red Hat Text', sans-serif;
 
 /* SIDEMENU BUTTON MODALS */
 
-.sidebar__modal {
+.hidden {
   display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.sidebar__modal {
+  border: #ffffff solid 1px;
+  border-radius: 10px;
+  background-color: #96deda;
+  position: absolute;
+  left: 45%;
+  top: 35%;
+  width: 300px;
+  height: 300px;
   text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2em;
+  z-index: 2;
 }
 
 .modal__input {
   height: 3vh;
   width: clamp(50px, 85%, 100%);
   font-size: 18px;
-  padding: 0 1%;
+  padding: 0 5%;
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid white;
   border-radius: 10px;
@@ -247,12 +273,10 @@ font-family: 'Red Hat Text', sans-serif;
 .checkmarks__container {
   display: flex;
   align-items: center;
-  gap: 2em;
+  gap: 6vw;
 }
 
-.checkmark--decline {
-  font-size: 4em;
-}
-.checkmark--accept {
+.checkmark {
   font-size: 3.5em;
+  cursor: pointer;
 }

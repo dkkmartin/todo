@@ -3,18 +3,12 @@ export default class DOM {
     return document.querySelector(selector)
   }
 
-  static createNode (tagName, attributes = {}, children = []) {
-    const node = document.createElement(tagName)
-
-    Object.entries(attributes).forEach(([key, value]) => {
-      node.setAttribute(key, value)
+  static globalEventListener (type, selector, callback) {
+    document.addEventListener(type, e => {
+      if (e.target.matches(selector)) {
+        callback(e)
+      }
     })
-
-    children.forEach(child => {
-      node.appendChild(child)
-    })
-
-    return node
   }
 
   static displayNone (element) {

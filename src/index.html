@@ -15,48 +15,12 @@
           <div class="sidebar__button__container">
             <div class="sidebar__button button--newproject">
               <button class="sidebar__button__title title--newproject">New Project</button>
-              <div class="sidebar__modal newproject__modal">
-                <p class="np__title">Project name</p>
-                <input class="modal__input" type="text" />
-                <div class="checkmarks__container">
-                  <div class="np__checkmark checkmark--accept">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="np__checkmark checkmark--decline">
-                    <i class="fas fa-times"></i>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="sidebar__button button--newtodo">
               <button class="sidebar__button__title title--newtodo">New Todo</button>
-              <div class="sidebar__modal newtodo__modal">
-                <p class="np__title">Project name</p>
-                <input class="modal__input" type="text" />
-                <div class="checkmarks__container">
-                  <div class="nt__checkmark checkmark--accept">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="nt__checkmark checkmark--decline">
-                    <i class="fas fa-times"></i>
-                  </div>
-                </div>
-              </div>
             </div>
             <div class="sidebar__button button--projects">
               <button class="sidebar__button__title title--projects">Projects</button>
-              <div class="sidebar__modal projects__modal">
-                <p class="p__title">Project name</p>
-                <input class="modal__input" type="text" />
-                <div class="checkmarks__container">
-                  <div class="p__checkmark checkmark--accept">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="p__checkmark checkmark--decline">
-                    <i class="fas fa-times"></i>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -67,6 +31,43 @@
         </div>
       </aside>
       <section class="main__content__cards">
+        <div class="sidebar__modal projects__modal hidden">
+          <p class="p__title">Project name</p>
+          <input class="modal__input" type="text" />
+          <div class="checkmarks__container">
+            <button class="p__checkmark checkmark --accept">
+              <i class="--accept fas fa-check"></i>
+            </button>
+            <div class="p__checkmark checkmark --decline">
+              <i class="fas fa-times --decline"></i>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar__modal newtodo__modal hidden">
+          <p class="np__title">Project name</p>
+          <input class="modal__input" type="text" />
+          <div class="checkmarks__container">
+            <button class="p__checkmark checkmark --accept">
+              <i class="--accept fas fa-check"></i>
+            </button>
+            <div class="p__checkmark checkmark --decline">
+              <i class="fas fa-times --decline"></i>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar__modal newproject__modal hidden">
+          <p class="np__title">Project name</p>
+          <input class="modal__input" type="text" />
+          <div class="checkmarks__container">
+            <button class="p__checkmark checkmark --accept">
+              <i class="--accept fas fa-check"></i>
+            </button>
+            <div class="p__checkmark checkmark --decline">
+              <i class="fas fa-times --decline"></i>
+            </div>
+          </div>
+        </div>
+
         <div class="card" data-card="0">
           <div class="card__content__container">
             <button class="button button__ellipse"></button>
@@ -94,6 +95,8 @@
           </div>
         </div>
       </section>
+
+      <div class="overlay hidden"></div>
     </main>
   </body>
 </html>
