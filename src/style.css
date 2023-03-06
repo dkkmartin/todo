@@ -7,32 +7,6 @@ font-family: 'Red Hat Text', sans-serif;
 
 /* ANIMATION */
 
-@keyframes expander {
-  0% {
-    height: 10vh;
-  }
-  100% {
-    height: 50vh;
-  }
-}
-
-@keyframes resizer {
-  0% {
-    height: 50vh;
-  }
-  100% {
-    height: 10vh;
-  }
-}
-
-.expand {
-  animation: expander 1s forwards;
-}
-
-.resize {
-  animation: resizer 1s forwards;
-}
-
 /* BODY */
 
 * {
@@ -247,18 +221,58 @@ font-family: 'Red Hat Text', sans-serif;
   border-radius: 10px;
   background-color: #96deda;
   position: absolute;
-  left: 45%;
-  top: 35%;
-  width: 300px;
-  height: 300px;
+  left: 40vw;
+  top: 25vh;
   text-align: center;
+  z-index: 2;
+  font-family: 'Red Hat Display', sans-serif;
+  padding: 1%;
+}
+
+.newproject__form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.projects__modal {
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  width: 20vw;
+}
+
+.newtodo__form {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2em;
-  z-index: 2;
+  gap: 1em;
+  width: 20vw;
 }
 
+.date__container {
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+  gap: 3vw;
+}
+
+.form__selector {
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  padding: 0 5%;
+  height: 3vh;
+  width: clamp(50px, 85%, 100%);
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+.fa-calendar-alt {
+  font-size: 3em;
+}
 .modal__input {
   height: 3vh;
   width: clamp(50px, 85%, 100%);
@@ -268,6 +282,7 @@ font-family: 'Red Hat Text', sans-serif;
   border: 1px solid white;
   border-radius: 10px;
   font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer;
 }
 
 .checkmarks__container {

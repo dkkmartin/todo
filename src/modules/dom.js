@@ -15,7 +15,7 @@ export default class DOM {
     element.style.display = 'none'
   }
 
-  static displayblock (element) {
+  static displayBlock (element) {
     element.style.display = 'block'
   }
 

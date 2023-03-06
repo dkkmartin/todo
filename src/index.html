@@ -31,41 +31,62 @@
         </div>
       </aside>
       <section class="main__content__cards">
+        <!-- projects modal -->
         <div class="sidebar__modal projects__modal hidden">
-          <p class="p__title">Project name</p>
-          <input class="modal__input" type="text" />
-          <div class="checkmarks__container">
-            <button class="p__checkmark checkmark --accept">
-              <i class="--accept fas fa-check"></i>
-            </button>
-            <div class="p__checkmark checkmark --decline">
-              <i class="fas fa-times --decline"></i>
-            </div>
-          </div>
+          <button class="modal__input">Home</button>
+          <button class="modal__input">School</button>
+          <button class="modal__input">Work</button>
+          <button class="modal__input">Gym</button>
         </div>
+        <!-- newtodo modal -->
         <div class="sidebar__modal newtodo__modal hidden">
-          <p class="np__title">Project name</p>
-          <input class="modal__input" type="text" />
-          <div class="checkmarks__container">
-            <button class="p__checkmark checkmark --accept">
-              <i class="--accept fas fa-check"></i>
-            </button>
-            <div class="p__checkmark checkmark --decline">
-              <i class="fas fa-times --decline"></i>
+          <form class="newtodo__form" action="">
+            <label for="title" class="np__title">Title</label>
+            <input id="title" class="modal__input" type="text" />
+            <label for="description" class="np__description">Description</label>
+            <input id="description" class="modal__input input__description" type="text" />
+            <label for="priority" class="np__priority">Priority</label>
+            <select class="form__selector" id="priority">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            <div class="date__container">
+              <i class="fas fa-calendar-alt"></i>
+              <div class="project__container">
+                <label for="project" class="project__title">Project</label>
+                <select class="form__selector" id="project">
+                  <option value="Home">Home</option>
+                  <option value="School">School</option>
+                  <option value="Work">Work</option>
+                  <option value="Gym">Gym</option>
+                </select>
+              </div>
             </div>
-          </div>
+            <div class="checkmarks__container">
+              <button class="p__checkmark checkmark newtodo--accept">
+                <i class="fas fa-check newtodo--accept"></i>
+              </button>
+              <button class="p__checkmark checkmark newtodo--decline">
+                <i class="fas fa-times newtodo--decline"></i>
+              </button>
+            </div>
+          </form>
         </div>
+        <!-- newproject modal -->
         <div class="sidebar__modal newproject__modal hidden">
-          <p class="np__title">Project name</p>
-          <input class="modal__input" type="text" />
-          <div class="checkmarks__container">
-            <button class="p__checkmark checkmark --accept">
-              <i class="--accept fas fa-check"></i>
-            </button>
-            <div class="p__checkmark checkmark --decline">
-              <i class="fas fa-times --decline"></i>
+          <form class="newproject__form" action="">
+            <label for="name" class="np__title">Project name</label>
+            <input id="name" class="modal__input" type="text" />
+            <div class="checkmarks__container">
+              <button class="p__checkmark checkmark newproject--accept">
+                <i class="fas fa-check newproject--accept"></i>
+              </button>
+              <button class="p__checkmark checkmark newproject--decline">
+                <i class="fas fa-times newproject--decline"></i>
+              </button>
             </div>
-          </div>
+          </form>
         </div>
 
         <div class="card" data-card="0">
