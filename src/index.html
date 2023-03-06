@@ -41,18 +41,21 @@
         <!-- newtodo modal -->
         <div class="sidebar__modal newtodo__modal hidden">
           <form class="newtodo__form" action="">
-            <label for="title" class="np__title">Title</label>
-            <input id="title" class="modal__input" type="text" />
-            <label for="description" class="np__description">Description</label>
-            <input id="description" class="modal__input input__description" type="text" />
-            <label for="priority" class="np__priority">Priority</label>
+            <label for="title" class="nt__title">Title</label>
+            <input id="nt__title__input" class="modal__input" type="text" />
+            <label for="nt__description" class="nt__description">Description</label>
+            <input id="nt__description" class="modal__input input__description" type="text" />
+            <label for="priority" class="nt__priority">Priority</label>
             <select class="form__selector" id="priority">
               <option value="low">Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
-            <div class="date__container">
-              <i class="fas fa-calendar-alt"></i>
+            <div class="dateProject__container">
+              <div class="date">
+                <label for="date">Date</label>
+                <input class="form__selector date__input" id="date" type="date" />
+              </div>
               <div class="project__container">
                 <label for="project" class="project__title">Project</label>
                 <select class="form__selector" id="project">
@@ -64,7 +67,7 @@
               </div>
             </div>
             <div class="checkmarks__container">
-              <button class="p__checkmark checkmark newtodo--accept">
+              <button type="submit" class="p__checkmark checkmark newtodo--accept">
                 <i class="fas fa-check newtodo--accept"></i>
               </button>
               <button class="p__checkmark checkmark newtodo--decline">

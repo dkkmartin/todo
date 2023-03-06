@@ -252,11 +252,29 @@ font-family: 'Red Hat Text', sans-serif;
   width: 20vw;
 }
 
-.date__container {
+.dateProject__container {
   display: flex;
-  align-items: end;
-  justify-content: space-evenly;
-  gap: 3vw;
+  gap: 2vw;
+}
+
+.project__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5vw;
+}
+
+#project {
+  margin-left: auto;
+}
+
+.project__title {
+  margin-left: 15%;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
 }
 
 .form__selector {
@@ -270,9 +288,10 @@ font-family: 'Red Hat Text', sans-serif;
   font-family: 'Red Hat Display', sans-serif;
 }
 
-.fa-calendar-alt {
-  font-size: 3em;
+.date__input {
+  width: 10vw;
 }
+
 .modal__input {
   height: 3vh;
   width: clamp(50px, 85%, 100%);
@@ -294,4 +313,12 @@ font-family: 'Red Hat Text', sans-serif;
 .checkmark {
   font-size: 3.5em;
   cursor: pointer;
+}
+
+.fa-check {
+  color: rgb(0, 255, 0);
+}
+
+.fa-times {
+  color: rgb(255, 0, 0);
 }
