@@ -9,6 +9,13 @@ const projectsModal = DOM.getElement('.projects__modal')
 const overlay = DOM.getElement('.overlay')
 const newTodoForm = DOM.getElement('.newtodo__form')
 const newProjectForm = DOM.getElement('.newproject__form')
+const inputDate = DOM.getElement('#date')
+const dateToday = format(new Date(), 'yyyy-MM-dd')
+
+function defaultDatePicker () {
+  inputDate.value = dateToday
+  inputDate.setAttribute('min', dateToday)
+}
 
 function closeEverything () {
   DOM.displayNone(overlay)
@@ -32,17 +39,15 @@ DOM.globalEventListener('click', '.sidebar__button__title', e => {
   if (e.target.classList.contains('title--newproject')) {
     DOM.displayBlock(overlay)
     DOM.displayBlock(newProjectModal)
-    console.log(e.target.classList)
   }
   if (e.target.classList.contains('title--newtodo')) {
     DOM.displayBlock(overlay)
     DOM.displayBlock(newTodoModal)
-    console.log(e.target.classList)
+    defaultDatePicker()
   }
   if (e.target.classList.contains('title--projects')) {
     DOM.displayBlock(overlay)
     DOM.displayFlex(projectsModal)
-    console.log(e.target.classList)
   }
 })
 
@@ -64,11 +69,10 @@ DOM.globalEventListener('click', '.newtodo--accept', e => {
   const inputDesc = DOM.getElement('#nt__description')
   const priority = DOM.getElement('#priority')
   const project = DOM.getElement('#project')
-  const inputDate = DOM.getElement('#date')
   const date = inputDate.value
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
   const newCard = new Cards(inputTitle.value, inputDesc.value, formatedDate, project.value, priority.value)
-  Cards.appendToArray(newCard)
+  Cards.appendChecker(newCard)
   newTodoForm.reset()
   closeSomethings(overlay, newTodoModal)
 })

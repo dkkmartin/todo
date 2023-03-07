@@ -1,3 +1,5 @@
+import Cards from './cards'
+
 export default class DOM {
   static getElement (selector) {
     return document.querySelector(selector)
