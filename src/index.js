@@ -1,4 +1,4 @@
-import { format, compareAsc } from 'date-fns'
+import { format } from 'date-fns'
 import './style.css'
 import DOM from './modules/dom'
 import Cards from './modules/cards'

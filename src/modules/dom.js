@@ -1,5 +1,3 @@
-import Cards from './cards'
-
 export default class DOM {
   static getElement (selector) {
     return document.querySelector(selector)
@@ -10,6 +8,13 @@ export default class DOM {
       if (e.target.matches(selector)) {
         callback(e)
       }
+    })
+  }
+
+  static clearCards () {
+    const card = document.querySelectorAll('.card')
+    card.forEach(item => {
+      item.remove()
     })
   }
 

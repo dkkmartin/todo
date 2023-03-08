@@ -1,13 +1,12 @@
 Missing features:
 _______________________
-Modals for every button {
-    COMPLETE THIS NEXT
-    remember to link all modals respectivly
-}
-Logic for creating new todo's and projects
-logic for showing projects
+
+Logic for creating projects
+Local storage
 logic for a card {
     Edit the card
-    delete the card
+    delete the card {
+        
+    }
     complete the card
 }
