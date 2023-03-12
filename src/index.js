@@ -76,3 +76,7 @@ DOM.globalEventListener('click', '.newtodo--accept', e => {
   newTodoForm.reset()
   closeSomethings(overlay, newTodoModal)
 })
+
+DOM.globalEventListener('click', '.fa-trash-alt', e => {
+  Cards.removeOneCard(e.target.parentNode.parentNode.parentNode)
+})

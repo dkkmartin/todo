@@ -1,3 +1,4 @@
+import { indexOf } from 'lodash'
 import DOM from './dom'
 
 export default class Cards {
@@ -31,13 +32,17 @@ export default class Cards {
     console.log(this.cardsArray)
   }
 
+  static removeOneCard (card) {
+    this.cardsArray.splice(card.dataset.index, 1)
+    this.makeCardsToScreen()
+  }
+
   static makeCardsToScreen () {
     DOM.clearCards()
-    const object = this.cardsArray
     const mainContent = DOM.getElement('.main__content__cards')
     const template = document.createElement('template')
-    object.forEach(element => {
-      const cardTemplate = `<div class="card">
+    this.cardsArray.forEach(element => {
+      const cardTemplate = `<div class="card" data-index="${this.cardsArray.indexOf(element)}">
       <div class="card__content__container">
         <button class="button button__ellipse"></button>
         <div class="card__content__text__container">
