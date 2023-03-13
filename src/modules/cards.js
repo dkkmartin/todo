@@ -1,4 +1,3 @@
-import { indexOf } from 'lodash'
 import DOM from './dom'
 
 export default class Cards {
@@ -16,7 +15,7 @@ export default class Cards {
     try {
       if (card.title === '') throw new Error('Title is empty')
     } catch (err) {
-      return console.warn(err)
+      return alert(err)
     }
     this.appendToArray(card)
     this.makeCardsToScreen()
@@ -27,14 +26,13 @@ export default class Cards {
     console.log(this.cardsArray)
   }
 
-  static removeFromArray (card) {
-    this.cardsArray.pop(card)
-    console.log(this.cardsArray)
-  }
-
   static removeOneCard (card) {
     this.cardsArray.splice(card.dataset.index, 1)
     this.makeCardsToScreen()
+  }
+
+  static editCard (card) {
+
   }
 
   static makeCardsToScreen () {
