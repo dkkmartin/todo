@@ -323,3 +323,7 @@ font-family: 'Red Hat Text', sans-serif;
 .fa-times {
   color: rgb(255, 0, 0);
 }
+
+.edittodo__modal__title {
+  font-weight: 300;
+}

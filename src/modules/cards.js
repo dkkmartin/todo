@@ -31,7 +31,7 @@ export default class Cards {
     this.makeCardsToScreen()
   }
 
-  static editCard (card) {
+  static editCard (...args) {
 
   }
 
