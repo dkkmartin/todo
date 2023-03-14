@@ -31,8 +31,27 @@ export default class Cards {
     this.makeCardsToScreen()
   }
 
-  static editCard (...args) {
-
+  static editCard (index, title, desc, date, project, prio) {
+    const card = this.cardsArray[index]
+    if (title || desc || date || project || prio) {
+      if (title) {
+        card.title = title
+      }
+      if (desc) {
+        card.desc = desc
+      }
+      if (date) {
+        card.date = date
+      }
+      if (project) {
+        card.project = project
+      }
+      if (prio) {
+        card.prio = prio
+      } else {
+        return undefined
+      }
+    }
   }
 
   static makeCardsToScreen () {

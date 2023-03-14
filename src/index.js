@@ -10,13 +10,17 @@ const projectsModal = DOM.getElement('.projects__modal')
 const editTodoModal = DOM.getElement('.edittodo__modal')
 const overlay = DOM.getElement('.overlay')
 const newTodoForm = DOM.getElement('.newtodo__form')
+const editForm = DOM.getElement('.edittodo__form')
 const newProjectForm = DOM.getElement('.newproject__form')
 const inputDate = DOM.getElement('#date')
+const inputDateEdit = DOM.getElement('#dateEdit')
 const dateToday = format(new Date(), 'yyyy-MM-dd')
 
 function defaultDatePicker () {
   inputDate.value = dateToday
   inputDate.setAttribute('min', dateToday)
+  inputDateEdit.value = dateToday
+  inputDateEdit.setAttribute('min', dateToday)
 }
 
 function closeEverything () {
@@ -63,13 +67,13 @@ DOM.globalEventListener('click', '.newproject--decline', e => {
 
 DOM.globalEventListener('click', '.newtodo--accept', e => {
   e.preventDefault()
-  const inputTitle = DOM.getElement('#nt__title__input')
-  const inputDesc = DOM.getElement('#nt__description')
-  const priority = DOM.getElement('#priority')
-  const project = DOM.getElement('#project')
+  const inputTitle = DOM.getElement('#nt__title__input').value
+  const inputDesc = DOM.getElement('#nt__description').value
+  const priority = DOM.getElement('#priority').value
+  const project = DOM.getElement('#project').value
   const date = inputDate.value
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
-  const newCard = new Cards(inputTitle.value, inputDesc.value, formatedDate, project.value, priority.value)
+  const newCard = new Cards(inputTitle, inputDesc, formatedDate, project, priority)
   Cards.appendChecker(newCard)
   newTodoForm.reset()
   closeEverything()
@@ -88,13 +92,14 @@ DOM.globalEventListener('click', '.fa-edit', e => {
 
 DOM.globalEventListener('click', '.edittodo--accept', e => {
   e.preventDefault()
-
-  const inputTitle = DOM.getElement('#nt__title__input')
-  const inputDesc = DOM.getElement('#nt__description')
-  const priority = DOM.getElement('#priority')
-  const project = DOM.getElement('#project')
+  const inputTitle = DOM.getElement('#et__title__input').value
+  const inputDesc = DOM.getElement('#et__description').value
+  const priority = DOM.getElement('#priority').value
+  const project = DOM.getElement('#project').value
   const date = inputDate.value
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
-  Cards.editCard()
-  newTodoForm.reset()
+  Cards.editCard(indexOfCardPicked, inputTitle, inputDesc, formatedDate, project, priority)
+  editForm.reset()
+  closeEverything()
+  Cards.makeCardsToScreen()
 })

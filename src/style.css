@@ -244,7 +244,8 @@ font-family: 'Red Hat Text', sans-serif;
   width: 20vw;
 }
 
-.newtodo__form {
+.newtodo__form,
+.edittodo__form {
   display: flex;
   flex-direction: column;
   align-items: center;
