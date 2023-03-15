@@ -13,7 +13,7 @@ const newTodoForm = DOM.getElement('.newtodo__form')
 const editForm = DOM.getElement('.edittodo__form')
 const newProjectForm = DOM.getElement('.newproject__form')
 const inputDate = DOM.getElement('#date')
-const inputDateEdit = DOM.getElement('#dateEdit')
+const inputDateEdit = DOM.getElement('#editDate')
 const dateToday = format(new Date(), 'yyyy-MM-dd')
 
 function defaultDatePicker () {
@@ -94,9 +94,9 @@ DOM.globalEventListener('click', '.edittodo--accept', e => {
   e.preventDefault()
   const inputTitle = DOM.getElement('#et__title__input').value
   const inputDesc = DOM.getElement('#et__description').value
-  const priority = DOM.getElement('#priority').value
-  const project = DOM.getElement('#project').value
-  const date = inputDate.value
+  const priority = DOM.getElement('#editPriority').value
+  const project = DOM.getElement('#editProject').value
+  const date = inputDateEdit.value
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
   Cards.editCard(indexOfCardPicked, inputTitle, inputDesc, formatedDate, project, priority)
   editForm.reset()

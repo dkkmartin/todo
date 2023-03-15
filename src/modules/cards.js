@@ -36,22 +36,26 @@ export default class Cards {
     if (title || desc || date || project || prio) {
       if (title) {
         card.title = title
+        console.log('Title true')
       }
       if (desc) {
         card.desc = desc
+        console.log('desc true')
       }
       if (date) {
         card.date = date
+        console.log(date, card.date)
       }
       if (project) {
         card.project = project
+        console.log(project, card.project)
       }
       if (prio) {
         card.prio = prio
-      } else {
-        return undefined
+        console.log('prio true')
       }
     }
+    console.log('Edit:', this.cardsArray[index])
   }
 
   static makeCardsToScreen () {
