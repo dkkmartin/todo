@@ -75,6 +75,14 @@ DOM.globalEventListener('click', '.newproject--decline', e => {
   closeEverything()
 })
 
+DOM.globalEventListener('click', '.newproject--accept', e => {
+  e.preventDefault()
+  const newProjectInput = DOM.getElement('.newproject__name').value
+  Projects.appendToProjects(newProjectInput)
+  newProjectForm.reset()
+  closeEverything()
+})
+
 DOM.globalEventListener('click', '.newtodo--accept', e => {
   e.preventDefault()
   const inputTitle = DOM.getElement('#nt__title__input').value

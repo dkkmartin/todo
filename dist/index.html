@@ -70,7 +70,7 @@
         <div class="sidebar__modal newproject__modal hidden">
           <form class="newproject__form" action="">
             <label for="name" class="np__title">Project name</label>
-            <input id="name" class="modal__input" type="text" />
+            <input id="name" class="modal__input newproject__name" type="text" />
             <div class="checkmarks__container">
               <button class="p__checkmark checkmark newproject--accept">
                 <i class="fas fa-check newproject--accept"></i>
@@ -102,12 +102,7 @@
               </div>
               <div class="project__container">
                 <label for="project" class="project__title">Project</label>
-                <select class="form__selector project__selector__edit" id="editProject">
-                  <!-- <option value="Home">Home</option>
-                  <option value="School">School</option>
-                  <option value="Work">Work</option>
-                  <option value="Gym">Gym</option> -->
-                </select>
+                <select class="form__selector project__selector__edit" id="editProject"></select>
               </div>
             </div>
             <div class="checkmarks__container">
