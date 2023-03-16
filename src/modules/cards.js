@@ -1,4 +1,5 @@
 import DOM from './dom'
+import Storage from './storage'
 
 export default class Cards {
   static cardsArray = []
@@ -31,31 +32,29 @@ export default class Cards {
     this.makeCardsToScreen()
   }
 
+  static getCardsFromStorage () {
+
+  }
+
   static editCard (index, title, desc, date, project, prio) {
     const card = this.cardsArray[index]
     if (title || desc || date || project || prio) {
       if (title) {
         card.title = title
-        console.log('Title true')
       }
       if (desc) {
         card.desc = desc
-        console.log('desc true')
       }
       if (date) {
         card.date = date
-        console.log(date, card.date)
       }
       if (project) {
         card.project = project
-        console.log(project, card.project)
       }
       if (prio) {
         card.prio = prio
-        console.log('prio true')
       }
     }
-    console.log('Edit:', this.cardsArray[index])
   }
 
   static makeCardsToScreen () {

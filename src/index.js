@@ -3,6 +3,7 @@ import './style.css'
 import DOM from './modules/dom'
 import Cards from './modules/cards'
 import Projects from './modules/projects'
+import Storage from './modules/storage'
 
 let indexOfCardPicked
 const newProjectModal = DOM.getElement('.newproject__modal')
@@ -93,6 +94,7 @@ DOM.globalEventListener('click', '.newtodo--accept', e => {
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
   const newCard = new Cards(inputTitle, inputDesc, formatedDate, project, priority)
   Cards.appendChecker(newCard)
+  Storage.setToStorage()
   newTodoForm.reset()
   closeEverything()
 })
