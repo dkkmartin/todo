@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 import './style.css'
 import DOM from './modules/dom'
 import Cards from './modules/cards'
+import Projects from './modules/projects'
 
 let indexOfCardPicked
 const newProjectModal = DOM.getElement('.newproject__modal')
@@ -43,11 +44,20 @@ DOM.globalEventListener('click', '.sidebar__button__title', e => {
     DOM.displayBlock(newProjectModal)
   }
   if (e.target.classList.contains('title--newtodo')) {
+    const projectPicker = DOM.getElement('.project__selector')
+    projectPicker.replaceChildren()
+    Projects.projects_db.forEach(item => {
+      DOM.makeElement('option', item, '.project__selector')
+    })
+    defaultDatePicker()
     DOM.displayBlock(overlay)
     DOM.displayBlock(newTodoModal)
-    defaultDatePicker()
   }
   if (e.target.classList.contains('title--projects')) {
+    projectsModal.replaceChildren()
+    Projects.projects_db.forEach(item => {
+      DOM.makeElement('button', item, '.projects__modal', 'modal__input')
+    })
     DOM.displayBlock(overlay)
     DOM.displayFlex(projectsModal)
   }
@@ -85,9 +95,14 @@ DOM.globalEventListener('click', '.fa-trash-alt', e => {
 
 DOM.globalEventListener('click', '.fa-edit', e => {
   indexOfCardPicked = e.target.parentNode.parentNode.parentNode.dataset.index
+  const projectPicker = DOM.getElement('.project__selector__edit')
+  projectPicker.replaceChildren()
+  Projects.projects_db.forEach(item => {
+    DOM.makeElement('option', item, '.project__selector__edit')
+  })
+  defaultDatePicker()
   DOM.displayBlock(overlay)
   DOM.displayBlock(editTodoModal)
-  defaultDatePicker()
 })
 
 DOM.globalEventListener('click', '.edittodo--accept', e => {

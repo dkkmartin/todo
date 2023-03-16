@@ -3,6 +3,15 @@ export default class DOM {
     return document.querySelector(selector)
   }
 
+  static makeElement (newElement, elementContent, appendWhere, className) {
+    const element = document.createElement(`${newElement}`)
+    element.textContent = elementContent
+    if (className) {
+      element.classList.add(className)
+    }
+    this.getElement(`${appendWhere}`).append(element)
+  }
+
   static globalEventListener (type, selector, callback) {
     document.addEventListener(type, e => {
       if (e.target.matches(selector)) {
@@ -36,5 +45,9 @@ export default class DOM {
 
   static removeClass (element, className) {
     element.classList.remove(className)
+  }
+
+  static removeElement (element) {
+    element.remove()
   }
 }
