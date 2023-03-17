@@ -32,8 +32,8 @@ export default class Cards {
     this.makeCardsToScreen()
   }
 
-  static getCardsFromStorage () {
-
+  static getCardsFromStorage (card) {
+    this.appendChecker(card)
   }
 
   static editCard (index, title, desc, date, project, prio) {
@@ -41,18 +41,23 @@ export default class Cards {
     if (title || desc || date || project || prio) {
       if (title) {
         card.title = title
+        Storage.editToStorage(`card_${index}`, 'title', title)
       }
       if (desc) {
         card.desc = desc
+        Storage.editToStorage(`card_${index}`, 'desc', desc)
       }
       if (date) {
         card.date = date
+        Storage.editToStorage(`card_${index}`, 'date', date)
       }
       if (project) {
         card.project = project
+        Storage.editToStorage(`card_${index}`, 'project', project)
       }
       if (prio) {
         card.prio = prio
+        Storage.editToStorage(`card_${index}`, 'prio', prio)
       }
     }
   }

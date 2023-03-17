@@ -39,6 +39,10 @@ DOM.globalEventListener('click', '.overlay', () => {
   closeEverything()
 })
 
+window.addEventListener('load', () => {
+  Storage.getFromStorage()
+})
+
 DOM.globalEventListener('click', '.sidebar__button__title', e => {
   if (e.target.classList.contains('title--newproject')) {
     DOM.displayBlock(overlay)
@@ -100,7 +104,9 @@ DOM.globalEventListener('click', '.newtodo--accept', e => {
 })
 
 DOM.globalEventListener('click', '.fa-trash-alt', e => {
+  const cardIndex = (e.target.parentNode.parentNode.parentNode.dataset.index)
   Cards.removeOneCard(e.target.parentNode.parentNode.parentNode)
+  Storage.deleteFromStorage(`card_${cardIndex}`)
 })
 
 DOM.globalEventListener('click', '.fa-edit', e => {
