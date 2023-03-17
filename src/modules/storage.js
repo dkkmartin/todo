@@ -1,47 +1,20 @@
 import Cards from './cards'
 
+// Should not do anything else than read from cardsArray
 export default class Storage {
-  // setStorage from cardsArray
-  // getStorage fills cardsArray
-  // edit storage clears the localstorage and setStorage again
-
+  // setStorage reads from cardsArray and appends to localstorage
+  // also clears storage before setStorage again
   static setToStorage () {
-    for (let i = 0; i < Cards.cardsArray.length; i++) {
-      window.localStorage.setItem(`card_${i}`, JSON.stringify(Cards.cardsArray[i]))
-    }
+    localStorage.clear()
+    localStorage.setItem('cards', JSON.stringify(Cards.cardsArray))
+    console.log(JSON.parse(localStorage.getItem('cards')))
   }
 
+  // getStorage reads from localstorage and appends to cardsArray
   static getFromStorage () {
-    for (let i = 0; i <= localStorage.length; i++) {
-      if (localStorage.getItem(`card_${i}`) === null) {
-        continue
-      }
-      const card = JSON.parse(window.localStorage.getItem(`card_${i}`))
-      Cards.getCardsFromStorage(card)
-    }
+    const storageArray = JSON.parse(localStorage.getItem('cards'))
+    Cards.cardsArray = storageArray
   }
-
-  static editToStorage (cardIndex, key, newValue) {
-    const card = JSON.parse(localStorage.getItem(cardIndex))
-    if (key === 'title') {
-      card.title = newValue
-    }
-    if (key === 'desc') {
-      card.desc = newValue
-    }
-    if (key === 'date') {
-      card.date = newValue
-    }
-    if (key === 'project') {
-      card.project = newValue
-    }
-    if (key === 'prio') {
-      card.prio = newValue
-    }
-    localStorage.setItem(`${cardIndex}`, JSON.stringify(card))
-  }
-
-  static deleteFromStorage (cardIndex) {
-    localStorage.removeItem(`${cardIndex}`)
-  }
+  // every edit or deleting of cards deletes localstorage
+  // reads the cardsArray, then appends to locastorage
 }

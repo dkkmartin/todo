@@ -41,6 +41,7 @@ DOM.globalEventListener('click', '.overlay', () => {
 
 window.addEventListener('load', () => {
   Storage.getFromStorage()
+  Cards.makeCardsToScreen()
 })
 
 DOM.globalEventListener('click', '.sidebar__button__title', e => {
@@ -98,15 +99,12 @@ DOM.globalEventListener('click', '.newtodo--accept', e => {
   const formatedDate = format(new Date(date), 'dd/MM/yyyy')
   const newCard = new Cards(inputTitle, inputDesc, formatedDate, project, priority)
   Cards.appendChecker(newCard)
-  Storage.setToStorage()
   newTodoForm.reset()
   closeEverything()
 })
 
 DOM.globalEventListener('click', '.fa-trash-alt', e => {
-  const cardIndex = (e.target.parentNode.parentNode.parentNode.dataset.index)
   Cards.removeOneCard(e.target.parentNode.parentNode.parentNode)
-  Storage.deleteFromStorage(`card_${cardIndex}`)
 })
 
 DOM.globalEventListener('click', '.fa-edit', e => {
