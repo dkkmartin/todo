@@ -53,6 +53,7 @@ export default class Cards {
         card.prio = prio
       }
     }
+    Storage.setToStorage()
   }
 
   static makeCardsToScreen () {

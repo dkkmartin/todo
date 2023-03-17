@@ -15,6 +15,4 @@ export default class Storage {
     const storageArray = JSON.parse(localStorage.getItem('cards'))
     Cards.cardsArray = storageArray
   }
-  // every edit or deleting of cards deletes localstorage
-  // reads the cardsArray, then appends to locastorage
 }

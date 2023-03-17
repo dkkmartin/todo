@@ -40,8 +40,10 @@ DOM.globalEventListener('click', '.overlay', () => {
 })
 
 window.addEventListener('load', () => {
-  Storage.getFromStorage()
-  Cards.makeCardsToScreen()
+  if (localStorage.getItem('cards')) {
+    Storage.getFromStorage()
+    Cards.makeCardsToScreen()
+  }
 })
 
 DOM.globalEventListener('click', '.sidebar__button__title', e => {
