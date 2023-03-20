@@ -134,3 +134,12 @@ DOM.globalEventListener('click', '.edittodo--accept', e => {
   closeEverything()
   Cards.makeCardsToScreen()
 })
+
+DOM.globalEventListener('click', '.button__ellipse', e => {
+  const index = e.target.parentNode.parentNode.dataset.index
+  e.target.parentNode.parentNode.classList.add('checkmark--checked')
+  e.target.parentNode.nextElementSibling.style.display = 'none'
+  Cards.cardsArray.splice(index, 1)
+  console.log(Cards.cardsArray)
+  Storage.setToStorage()
+})

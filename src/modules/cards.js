@@ -25,7 +25,7 @@ export default class Cards {
 
   static appendToArray (card) {
     this.cardsArray.push(card)
-    console.log(this.cardsArray)
+    // console.log(this.cardsArray)
   }
 
   static removeOneCard (card) {

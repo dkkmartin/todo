@@ -328,3 +328,9 @@ font-family: 'Red Hat Text', sans-serif;
 .edittodo__modal__title {
   font-weight: 300;
 }
+
+.checkmark--checked {
+  opacity: 0.3;
+  background-color: grey;
+  border: none;
+}
