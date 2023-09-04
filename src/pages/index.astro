@@ -1,0 +1,615 @@
+---
+---
+
+<script>
+import { format } from 'date-fns'
+import DOM from '../scripts/modules/dom'
+import Cards from '../scripts/modules/cards'
+import Projects from '../scripts/modules/projects'
+import Storage from '../scripts/modules/storage'
+
+let indexOfCardPicked
+const newProjectModal = DOM.getElement('.newproject__modal')
+const newTodoModal = DOM.getElement('.newtodo__modal')
+const projectsModal = DOM.getElement('.projects__modal')
+const editTodoModal = DOM.getElement('.edittodo__modal')
+const overlay = DOM.getElement('.overlay')
+const newTodoForm = DOM.getElement('.newtodo__form')
+const editForm = DOM.getElement('.edittodo__form')
+const newProjectForm = DOM.getElement('.newproject__form')
+const inputDate = DOM.getElement('#date')
+const inputDateEdit = DOM.getElement('#editDate')
+const dateToday = format(new Date(), 'yyyy-MM-dd')
+
+function defaultDatePicker () {
+  inputDate.value = dateToday
+  inputDate.setAttribute('min', dateToday)
+  inputDateEdit.value = dateToday
+  inputDateEdit.setAttribute('min', dateToday)
+}
+
+function closeEverything () {
+  DOM.displayNone(overlay)
+  DOM.displayNone(newProjectModal)
+  DOM.displayNone(newTodoModal)
+  DOM.displayNone(projectsModal)
+  DOM.displayNone(editTodoModal)
+  newProjectForm.reset()
+  newTodoForm.reset()
+}
+
+DOM.globalEventListener('click', '.overlay', () => {
+  closeEverything()
+})
+
+window.addEventListener('load', () => {
+  if (localStorage.getItem('cards')) {
+    Storage.getFromStorage()
+    Cards.makeCardsToScreen()
+  }
+})
+
+DOM.globalEventListener('click', '.sidebar__button__title', e => {
+  if (e.target.classList.contains('title--newproject')) {
+    DOM.displayBlock(overlay)
+    DOM.displayBlock(newProjectModal)
+  }
+  if (e.target.classList.contains('title--newtodo')) {
+    const projectPicker = DOM.getElement('.project__selector')
+    projectPicker.replaceChildren()
+    Projects.projects_db.forEach(item => {
+      DOM.makeElement('option', item, '.project__selector')
+    })
+    defaultDatePicker()
+    DOM.displayBlock(overlay)
+    DOM.displayBlock(newTodoModal)
+  }
+  if (e.target.classList.contains('title--projects')) {
+    projectsModal.replaceChildren()
+    Projects.projects_db.forEach(item => {
+      DOM.makeElement('button', item, '.projects__modal', 'modal__input')
+    })
+    DOM.displayBlock(overlay)
+    DOM.displayFlex(projectsModal)
+  }
+})
+
+DOM.globalEventListener('click', '.newtodo--decline', e => {
+  e.preventDefault()
+  newTodoForm.reset()
+  closeEverything()
+})
+
+DOM.globalEventListener('click', '.newproject--decline', e => {
+  e.preventDefault()
+  newProjectForm.reset()
+  closeEverything()
+})
+
+DOM.globalEventListener('click', '.newproject--accept', e => {
+  e.preventDefault()
+  const newProjectInput = DOM.getElement('.newproject__name').value
+  Projects.appendToProjects(newProjectInput)
+  newProjectForm.reset()
+  closeEverything()
+})
+
+DOM.globalEventListener('click', '.newtodo--accept', e => {
+  e.preventDefault()
+  const inputTitle = DOM.getElement('#nt__title__input').value
+  const inputDesc = DOM.getElement('#nt__description').value
+  const priority = DOM.getElement('#priority').value
+  const project = DOM.getElement('#project').value
+  const date = inputDate.value
+  const formatedDate = format(new Date(date), 'dd/MM/yyyy')
+  const newCard = new Cards(inputTitle, inputDesc, formatedDate, project, priority)
+  Cards.appendChecker(newCard)
+  newTodoForm.reset()
+  closeEverything()
+})
+
+DOM.globalEventListener('click', '.fa-trash-alt', e => {
+  Cards.removeOneCard(e.target.parentNode.parentNode.parentNode)
+})
+
+DOM.globalEventListener('click', '.fa-edit', e => {
+  indexOfCardPicked = e.target.parentNode.parentNode.parentNode.dataset.index
+  const projectPicker = DOM.getElement('.project__selector__edit')
+  projectPicker.replaceChildren()
+  Projects.projects_db.forEach(item => {
+    DOM.makeElement('option', item, '.project__selector__edit')
+  })
+  defaultDatePicker()
+  DOM.displayBlock(overlay)
+  DOM.displayBlock(editTodoModal)
+})
+
+DOM.globalEventListener('click', '.edittodo--accept', e => {
+  e.preventDefault()
+  const inputTitle = DOM.getElement('#et__title__input').value
+  const inputDesc = DOM.getElement('#et__description').value
+  const priority = DOM.getElement('#editPriority').value
+  const project = DOM.getElement('#editProject').value
+  const date = inputDateEdit.value
+  const formatedDate = format(new Date(date), 'dd/MM/yyyy')
+  Cards.editCard(indexOfCardPicked, inputTitle, inputDesc, formatedDate, project, priority)
+  editForm.reset()
+  closeEverything()
+  Cards.makeCardsToScreen()
+})
+
+DOM.globalEventListener('click', '.button__ellipse', e => {
+  const index = e.target.parentNode.parentNode.dataset.index
+  e.target.parentNode.parentNode.classList.add('checkmark--checked')
+  e.target.parentNode.nextElementSibling.style.display = 'none'
+  Cards.cardsArray.splice(index, 1)
+  console.log(Cards.cardsArray)
+  Storage.setToStorage()
+})
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/42e26b8656.js" crossorigin="anonymous"></script>
+    <title>Todo</title>
+  </head>
+  <body>
+    <main class="main">
+      <aside class="sidebar">
+        <div class="sidebar__container">
+          <h1 class="sidebar__title">TODO</h1>
+          <div class="sidebar__button__container">
+            <div class="sidebar__button button--newproject">
+              <button class="sidebar__button__title title--newproject">New Project</button>
+            </div>
+            <div class="sidebar__button button--newtodo">
+              <button class="sidebar__button__title title--newtodo">New Todo</button>
+            </div>
+            <div class="sidebar__button button--projects">
+              <button class="sidebar__button__title title--projects">Projects</button>
+            </div>
+          </div>
+        </div>
+        <div class="footer__container">
+          <a href="https://github.com/dkkmartin" target="_blank" class="link__github">
+            <i class="icon fab fa-github"></i>
+          </a>
+        </div>
+      </aside>
+      <section class="main__content__cards">
+        <!-- projects modal -->
+        <div class="sidebar__modal projects__modal hidden"></div>
+        <!-- newtodo modal -->
+        <div class="sidebar__modal newtodo__modal hidden">
+          <form class="newtodo__form" action="">
+            <label for="title" class="nt__title">Title</label>
+            <input id="nt__title__input" class="modal__input" type="text" />
+            <label for="nt__description" class="nt__description">Description</label>
+            <input id="nt__description" class="modal__input input__description" type="text" />
+            <label for="priority" class="nt__priority">Priority</label>
+            <select class="form__selector" id="priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <div class="dateProject__container">
+              <div class="date">
+                <label for="date">Date</label>
+                <input class="form__selector date__input" id="date" type="date" />
+              </div>
+              <div class="project__container">
+                <label for="project" class="project__title">Project</label>
+                <select class="form__selector project__selector" id="project"></select>
+              </div>
+            </div>
+            <div class="checkmarks__container">
+              <button type="submit" class="p__checkmark checkmark newtodo--accept">
+                <i class="fas fa-check newtodo--accept"></i>
+              </button>
+              <button class="p__checkmark checkmark newtodo--decline">
+                <i class="fas fa-times newtodo--decline"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- newproject modal -->
+        <div class="sidebar__modal newproject__modal hidden">
+          <form class="newproject__form" action="">
+            <label for="name" class="np__title">Project name</label>
+            <input id="name" class="modal__input newproject__name" type="text" />
+            <div class="checkmarks__container">
+              <button class="p__checkmark checkmark newproject--accept">
+                <i class="fas fa-check newproject--accept"></i>
+              </button>
+              <button class="p__checkmark checkmark newproject--decline">
+                <i class="fas fa-times newproject--decline"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- edit todo modal -->
+        <div class="sidebar__modal edittodo__modal hidden">
+          <form class="edittodo__form" action="">
+            <h1 class="edittodo__modal__title">Edit</h1>
+            <label for="title" class="et__title">title</label>
+            <input id="et__title__input" class="modal__input" type="text" />
+            <label for="et__description" class="et__description">Description</label>
+            <input id="et__description" class="modal__input input__description" type="text" />
+            <label for="priority" class="nt__priority">Priority</label>
+            <select class="form__selector" id="editPriority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <div class="dateProject__container">
+              <div class="date">
+                <label for="date">Date</label>
+                <input class="form__selector date__input" id="editDate" type="date" />
+              </div>
+              <div class="project__container">
+                <label for="project" class="project__title">Project</label>
+                <select class="form__selector project__selector__edit" id="editProject"></select>
+              </div>
+            </div>
+            <div class="checkmarks__container">
+              <button type="submit" class="p__checkmark checkmark newtodo--accept">
+                <i class="fas fa-check edittodo--accept"></i>
+              </button>
+              <button class="p__checkmark checkmark newtodo--decline">
+                <i class="fas fa-times newtodo--decline"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="overlay hidden"></div>
+    </main>
+  </body>
+</html>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+/* 
+font-family: 'Red Hat Display', sans-serif;
+font-family: 'Red Hat Text', sans-serif;
+*/
+
+/* ANIMATION */
+
+/* BODY */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* MAIN */
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+/* CARD */
+
+.main__content__cards {
+  background-image: url(../assets/background.png);
+  background-size: 100% 100%;
+  flex: 5;
+  padding: 1%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(375px, 1fr));
+  grid-template-rows: repeat(10, 1fr);
+  align-items: center;
+}
+
+.card {
+  justify-self: center;
+  height: clamp(65px, 6vh, 7vh);
+  width: calc(100% - 2em);
+  padding: clamp(1px, 1%, 2%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Red Hat Text', sans-serif;
+}
+
+.card__content__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.card__content__text__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.card__content__info__container {
+  display: flex;
+  gap: 1%;
+}
+
+.info__calendar,
+.info__project,
+.info__priority {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 1% 5%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.button__ellipse {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button__ellipse:hover {
+  background-color: rgba(128, 255, 111, 0.5);
+}
+
+.card__content__icons__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.icon--blue {
+  color: rgba(61, 158, 255, 0.7);
+  font-size: 22px;
+}
+
+.icon--red {
+  color: rgba(255, 3, 3, 0.5);
+  font-size: 22px;
+}
+
+.card__content__title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.button--nostyle {
+  border: none;
+  background-color: inherit;
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.button--nostyle:hover {
+  transform: scale(1.25);
+}
+
+/* SIDE MENU */
+
+.sidebar {
+  flex: 1;
+  border-right: 1px solid white;
+  background: linear-gradient(90deg, #50c9c3 0%, #96deda 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Red Hat Display', sans-serif;
+  padding: 1em 0;
+}
+
+.sidebar__title {
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.sidebar__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4em;
+}
+
+.sidebar__button__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  color: #363636;
+}
+
+.sidebar__button {
+  display: grid;
+  color: #363636;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: inherit;
+  width: 15vw;
+  height: 10vh;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.sidebar__button__title,
+.checkmark {
+  border: none;
+  background-color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  width: 100%;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.link__github {
+  color: inherit;
+}
+
+/* SIDEMENU BUTTON MODALS */
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.sidebar__modal {
+  border: #ffffff solid 1px;
+  border-radius: 10px;
+  background-color: #96deda;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -70%);
+  text-align: center;
+  z-index: 2;
+  font-family: 'Red Hat Display', sans-serif;
+  padding: 1%;
+}
+
+.newproject__form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.projects__modal {
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  width: 20vw;
+}
+
+.newtodo__form,
+.edittodo__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: 20vw;
+}
+
+.dateProject__container {
+  display: flex;
+  gap: 2vw;
+}
+
+.project__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5vw;
+}
+
+#project {
+  margin-left: auto;
+}
+
+.project__title {
+  margin-left: 15%;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__selector {
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  padding: 0 5%;
+  height: 3vh;
+  width: clamp(50px, 85%, 100%);
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+.date__input {
+  width: 10vw;
+}
+
+.modal__input {
+  height: 3vh;
+  width: clamp(50px, 85%, 100%);
+  font-size: 18px;
+  padding: 0 5%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid white;
+  border-radius: 10px;
+  font-family: 'Red Hat Display', sans-serif;
+  cursor: pointer;
+}
+
+.checkmarks__container {
+  display: flex;
+  align-items: center;
+  gap: 6vw;
+}
+
+.checkmark {
+  font-size: 3.5em;
+  cursor: pointer;
+}
+
+.fa-check {
+  color: rgb(0, 255, 0);
+}
+
+.fa-times {
+  color: rgb(255, 0, 0);
+}
+
+.edittodo__modal__title {
+  font-weight: 300;
+}
+
+.checkmark--checked {
+  opacity: 0.3;
+  background-color: grey;
+  border: none;
+}
+
+</style>
