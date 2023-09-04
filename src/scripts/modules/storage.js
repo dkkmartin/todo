@@ -7,7 +7,6 @@ export default class Storage {
   static setToStorage () {
     localStorage.clear()
     localStorage.setItem('cards', JSON.stringify(Cards.cardsArray))
-    console.log(JSON.parse(localStorage.getItem('cards')))
   }
 
   // getStorage reads from localstorage and appends to cardsArray
