@@ -1,38 +1,16 @@
 {
-  "name": "todo",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "name": "todo-update",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack server --open"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dkkmartin/todo.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dkkmartin/todo/issues"
-  },
-  "homepage": "https://github.com/dkkmartin/todo#readme",
   "dependencies": {
-    "date-fns": "^2.29.3",
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "css-loader": "^6.7.3",
-    "eslint": "^8.35.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "html-webpack-plugin": "^5.5.0",
-    "style-loader": "^3.3.1",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "astro": "^3.0.7",
+    "date-fns": "^2.30.0"
   }
 }
